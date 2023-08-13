@@ -1,6 +1,6 @@
 # Fitness Market Website Backend
 
-![Fitness Market Logo](link_to_logo_image.png)
+
 
 Welcome to the backend repository for the Fitness Market Website powered by Spring Boot! 🏋️‍♂️
 
