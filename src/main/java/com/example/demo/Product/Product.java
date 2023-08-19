@@ -26,9 +26,8 @@ public class Product {
     private String name;
     @Column(name = "description")
     private String description;
-    @ManyToOne
     @JoinColumn(name = "category_id",nullable = false)
-    private ProductCatogery category;
+    private Long category;
     @Column(name = "price")
     private int price;
     @Column(name = "stock_Quantity")

@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.util.Set;
 
 @Entity
-@Table(name = "product_category")
+@Table(name = "productcategory")
 @Getter
 @Setter
 
@@ -19,8 +19,6 @@ public class ProductCatogery {
     private Long id;
     @Column(name="categoryname")
     private String categoryName;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
-    private Set<Product> products;
 
 
 
