@@ -27,7 +27,7 @@ public class Product {
     @Column(name = "description")
     private String description;
     @JoinColumn(name = "category_id",nullable = false)
-    private Long category;
+    private Long categoryId;
     @Column(name = "price")
     private int price;
     @Column(name = "stock_Quantity")
@@ -42,11 +42,11 @@ public class Product {
     private LocalDateTime updatedAt;
 
 
-    public Product( String name, String description, int categoryId, int price, int stockQuantity, String imageUrl, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Product( String name, String description, Long categoryId, int price, int stockQuantity, String imageUrl, LocalDateTime createdAt, LocalDateTime updatedAt) {
 
         this.name = name;
         this.description = description;
-//        this.category = categoryId;
+        this.categoryId = categoryId;
         this.price = price;
         this.stockQuantity = stockQuantity;
         this.imageUrl = imageUrl;
