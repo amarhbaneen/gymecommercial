@@ -1,7 +1,8 @@
 package com.example.demo.config;
+import com.example.demo.Contry.Country;
 import com.example.demo.Product.Product;
 import com.example.demo.ProductCatogery.ProductCatogery;
-import jakarta.persistence.Entity;
+import com.example.demo.State.State;
 import jakarta.persistence.EntityManager;
 
 import jakarta.persistence.metamodel.EntityType;
@@ -35,13 +36,21 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         HttpMethod[] UnsupportedActions = {HttpMethod.DELETE,HttpMethod.POST,HttpMethod.PUT};
 
         // disable for Product Entity
-        config.getExposureConfiguration().forDomainType(Product.class).withItemExposure((metdata, httpMethods) -> httpMethods.disable(UnsupportedActions)).withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(UnsupportedActions)));
+        DisableMethod(Product.class,config, UnsupportedActions);
+        DisableMethod(ProductCatogery.class,config, UnsupportedActions);
+        DisableMethod(State.class,config, UnsupportedActions);
+        DisableMethod(Country.class,config, UnsupportedActions);
 
-        // disable for ProductCategory Entity
-        config.getExposureConfiguration().forDomainType(ProductCatogery.class).withItemExposure((metdata, httpMethods) -> httpMethods.disable(UnsupportedActions)).withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(UnsupportedActions)));
+
+
 
 
         exposeIds(config);
+    }
+
+    private static void DisableMethod(Class theClass ,RepositoryRestConfiguration config, HttpMethod[] UnsupportedActions) {
+        config.getExposureConfiguration().forDomainType(theClass).withItemExposure((metdata, httpMethods) -> httpMethods.disable(UnsupportedActions)).withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(UnsupportedActions)));
+
     }
 
     private void exposeIds(RepositoryRestConfiguration config) {
@@ -56,5 +65,6 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         config.exposeIdsFor(domainTypes);
 
     }
+
 }
 
